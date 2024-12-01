@@ -139,7 +139,7 @@ Fig. 2. Axial drift estimation using spatial displacement. A X’ and Y’ displ
 - **Stabilization Results**:
   - Real-time plots of laser spot position and error signals.
 
-We then compared the long-term stability of the remote focusing system with and without focus stabilization. Without feedback correction, the system drifted ~ 2 microns over the course of an hour (Figure 3B). This is not unexpected, as our laboratory experiences temperature oscillations with an amplitude of ~1 degrees Celsius (see also Appendix for temperature measurements). With the focus stabilization on, the standard deviation over an hour was 150 nm measured in the remote space, corresponding to 113 nm mapped into sample space.
+We then compared the long-term stability of the remote focusing system with and without focus stabilization. Without feedback correction, the system drifted ~ 2 microns over the course of an hour (Figure 3B). This is not unexpected, as our laboratory experiences temperature oscillations with an amplitude of ~ 1 degrees Celsius (see also Appendix for temperature measurements). With the focus stabilization on, the standard deviation over an hour was 150 nm measured in the remote space, corresponding to 113 nm mapped into sample space.
 
 ![OPM-Autofocus-Fig 3](https://github.com/user-attachments/assets/57e7f752-847f-4534-a06f-8099c5d6ffed)
 
