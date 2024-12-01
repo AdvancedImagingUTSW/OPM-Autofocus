@@ -37,6 +37,28 @@ The core components:
 ## Installation
 
 ### Prerequisites
+- **Optics**:
+
+See our bioRxiv paper [1] for full optical setup instructions.
+
+For illumination, laser light from a previously published light-sheet module [2] is coupled over a dichroic mirror (Di03-R405/488/561/635-t1-25x36, Semrock) into the optical train of the OPM. After passing through two tube lenses (TL 1: ITL-200, TL2: custom, 150mm EFL) and two galvo mirrors (Pangolin Saturn 9B with a 10mm y-mirror mounted 90 degrees rotated) for image space scanning [3] , an oblique sheet is launched in sample space through the primary objective (O1, Nikon 40X, NA 1.25 silicone oil). 
+
+Fluorescence light is detected through the same objective, whose pupil is conjugate to the secondary objective (O2, Nikon 40X NA 0.95). The secondary objective maps fluorescence emitters along the light-sheet into the remote space while minimizing spherical aberrations. A tertiary imaging system is used to map the fluorescence on a scientific CMOS camera (Orca Flash 4, Hamamatsu). The tertiary imaging system consists of a glass-tipped objective (AMS-AGY v2 54-18-9, Applied Scientific instrumentation) and a tube lens (f=300mm achromatic doublet, Thorlabs).
+  
+![OPM-Autofocus-Fig 1](https://github.com/user-attachments/assets/c11085e2-f4e3-436b-ac8d-73e49a8d9c0a)
+
+Fig. 1. Schematic layout of an oblique plane microscope with remote focus stabilization. A Schematic layout of the OPM. Green shows the fluorescence path, blue shows the light-sheet path and magenta shows the alignment laser path. O1: primary objective, O2: secondary objective, O3: tertiary objective. TL1-TL3: first, second and third tube lens. B Position of the alignment laser beam (blue) in the pupil of the secondary objective O2. C Laser focus in the remote imaging space between O2 and O3. D Laser focus shown in an orthogonal plane to C. Dotted lines correspond to the focal plane of O3.
+
+For the remote focus stabilization, we injected a collimated laser beam over the backside of the dichroic mirror into the optical train of the OPM (Figure 1A). For the experiments shown here, we used a fiber coupled 488nm laser (Edmund Optics, 10mW Pigtailed Laser Diode, part nr: #23-761), which was collimated with a f=100mm lens. The reflective side of the dichroic faces towards the primary objective (i.e. the light-sheet illumination laser bounces off the coated front surface of the dichroic). In contrast, the alignment laser first travels through the dichroic mirror substrate. As such, there is a secondary reflection from the substrate itself. We reasoned that if we use a laser line for which the dichroic was optimized for reflection, the secondary reflection would be minor. Indeed, we observed a notable double reflection when using another wavelength (i.e. laser diode at 785nm), whereas the 488nm line showed a single dominant reflection.
+
+The alignment laser beam passes through the secondary and tertiary objective and is picked up by a dichroic mirror (Semrock Di02-R488-25x36) after the tertiary tube lens. The laser beam is then focused on a camera (OV9281-120, labeled PiCam in Figure 1A) used for the focus stabilization feedback. While it is advisable to put filters and mirrors in the infinity space, we found that with a tube lens of low optical power, placing the dichroic in the “image space” causes negligible aberrations. Adopters of the technology may consider placing the dichroic in the infinity space of the tertiary imaging system when using a tube lens with shorter focal length.
+
+Our system measures the relative misalignment of the remote focus system by using a laser beam that is tilted to the optical axes of the secondary and tertiary objective (labeled Z and Z’ respectively). As such, an axial misalignment not only causes the laser beam to defocus, but also to be translated on the alignment camera. To this end, we inject the alignment beam at an off-center position into the secondary pupil (Figure 1B). This causes the beam to tilt in the remote focus space, as shown in Figure 1C. As such, if either the secondary or tertiary objective is shifted axially, i.e. its focal plane moves, the beam is defocused, but also translated laterally along the Y’ axis on the alignment camera.
+
+In the other dimension, a tilt of the laser beam occurs naturally, as the tertiary imaging system is angled to the optical axis of the secondary objective (Figure 1D). In case of focal drift of the tertiary objective, the laser beam gets translated in the X’ direction, whereas a drift from the secondary objective will not show in the X’ direction (see also Figure 1D for an illustration).
+
+The off-centering of the alignment laser in the O2 pupil increases the sensitivity of the measurement (a given focal shift causes a larger lateral shift on the camera), but it also ensures that axial shifts of both O2 and O3 become measurable. To place the laser beam off-center in the pupil of O2, its numerical aperture has to be reduced (i.e. the laser beam underfills the pupil). This in turn increases the depth of focus of the laser beam and hence makes fitting of the laser spot easier over a larger defocus range. Importantly, it does not lower the localization precision for the scenario of “unlimited photons”. While the spot gets larger in size when reducing its NA, more photons (if the laser intensity of the laser beam is increased accordingly) contribute to the measurement, which restores the measurement precision.
+
 - **Hardware**:
   - Raspberry Pi 4B or later.
   - Raspberry Pi Camera (OV9281 or compatible high-speed camera).
@@ -106,16 +128,29 @@ The core components:
 ## Example Outputs
 
 - **Calibration Curve**: 
-  Plots showing the relationship between actuator voltage and focal displacement.
+  Plots showing the relationship between error function and focal displacement.
+
+![OPM-Autofocus-Fig 2](https://github.com/user-attachments/assets/c25af649-1fa7-4bac-8ac8-7928cceb6cb9)
+
+Fig. 2. Axial drift estimation using spatial displacement. A X’ and Y’ displacement of the laser PSF extracted from tertiary objective Z’-scan. B Calibration curve of focal drift estimation using Euclidean Distance. C Z’-position color-coded projection image of 300 laser spots captured from a tertiary objective scan, insets show the PSFs at -1.5-micron, 0 micron and +1.5 microns. The laser PSF location moves diagonally over the image sensor through the Z’-scan.
+
 - **Stabilization Results**:
   - Real-time plots of laser spot position and error signals.
+
+![OPM-Autofocus-Fig 3](https://github.com/user-attachments/assets/57e7f752-847f-4534-a06f-8099c5d6ffed)
+
+Fig. 3. A Time-lapse acquisition at focal plane for estimating axial precision. B Axial drift with stabilization ON (red) and OFF (black) monitored for 1 hour. S.D. Standard deviation. 
+
   - Logs of actuator adjustments.
 
 ---
 
 ## References
 
-- Nguyen, T. D., Rahmani, A., Ponjavic, A., Millett-Sikking, A., & Fiolka, R. *Active Remote Focus Stabilization in Oblique Plane Microscopy*. (bioRxiv.org - Comming soon)
+- 1. Nguyen, T. D., Rahmani, A., Ponjavic, A., Millett-Sikking, A., & Fiolka, R. *Active Remote Focus Stabilization in Oblique Plane Microscopy*. (bioRxiv.org - Comming soon)
+- 2. Chen, B., Chang, B.-J., Zhou, F. Y., Daetwyler, S., Sapoznik, E., Nanes, B. A., Terrazas, I., Gihana, G. M., Perez Castro, L., Chan, I. S., Conacci-Sorrell, M., Dean, K. M., Millett-Sikking, A., York, A. G., & Fiolka, R. (2022). Increasing the field-of-view in oblique plane microscopy via optical tiling. Biomed. Opt. Express, 13, 5616–5627.
+- 3. Daetwyler, S., Chang, B.-J., Chen, B., Voigt, F. F., Rajendran, D., Zhou, F., & Fiolka, R. (2023). Mesoscopic oblique plane microscopy via light-sheet mirroring. Optica, 10, 1571–1581.
+
 
 
 ---
