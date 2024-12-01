@@ -130,12 +130,16 @@ The off-centering of the alignment laser in the O2 pupil increases the sensitivi
 - **Calibration Curve**: 
   Plots showing the relationship between error function and focal displacement.
 
+To measure the accuracy of our stabilization method, we acquired a rapid timelapse sequence, with a duration of 100 seconds to minimize drift. The standard deviation of the localization measurement of the laser spot was then converted into nanometers using a calibration curve (where the piezo stack was stepped in known increments), as shown in Figure 2A-C and Figure 3A. We measured a standard deviation of ~57 nm using this approach. If converted back to the sample space (demagnification of 1.33), this corresponds to an axial precision of 43 nm, which is an order of magnitude lower than the depth of focus of the detection system.
+
 ![OPM-Autofocus-Fig 2](https://github.com/user-attachments/assets/c25af649-1fa7-4bac-8ac8-7928cceb6cb9)
 
 Fig. 2. Axial drift estimation using spatial displacement. A X’ and Y’ displacement of the laser PSF extracted from tertiary objective Z’-scan. B Calibration curve of focal drift estimation using Euclidean Distance. C Z’-position color-coded projection image of 300 laser spots captured from a tertiary objective scan, insets show the PSFs at -1.5-micron, 0 micron and +1.5 microns. The laser PSF location moves diagonally over the image sensor through the Z’-scan.
 
 - **Stabilization Results**:
   - Real-time plots of laser spot position and error signals.
+
+We then compared the long-term stability of the remote focusing system with and without focus stabilization. Without feedback correction, the system drifted ~ 2 microns over the course of an hour (Figure 3B). This is not unexpected, as our laboratory experiences temperature oscillations with an amplitude of ~1 degrees Celsius (see also Appendix for temperature measurements). With the focus stabilization on, the standard deviation over an hour was 150 nm measured in the remote space, corresponding to 113 nm mapped into sample space.
 
 ![OPM-Autofocus-Fig 3](https://github.com/user-attachments/assets/57e7f752-847f-4534-a06f-8099c5d6ffed)
 
