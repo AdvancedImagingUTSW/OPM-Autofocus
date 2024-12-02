@@ -202,7 +202,6 @@ The user can recalibrate the system if necessary: click **Stop Button** -> click
 ## Autofocus Calibration and Analysis *(OPM-Autofocus_Analysis_and_Visualize_Calibration_Curve.py)*
 
 The developed GUI provides an interactive tool for processing and analyzing PSF (point spread function) images acquired during calibration of the autofocusing system. The software takes input images captured as the piezo stack moves the tertiary objective lens from -2.5 µm to +2.5 µm in fine increments. These images serve as the basis for generating calibration curves and computing error functions, with the PSF position measured at each displacement. PSF image sequence for building the calibration curve can be found in 
-
 [Image sequences for calibration.zip](https://github.com/user-attachments/files/17984968/Image.sequences.for.calibration.zip)
 
 ![OPM-Autofocus-Fig S2](https://github.com/user-attachments/assets/6a9e27c4-c72c-4964-a508-e073cba10ccc)
