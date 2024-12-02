@@ -124,7 +124,7 @@ The off-centering of the alignment laser in the O2 pupil increases the sensitivi
 
 ---
 
-## Graphical User Interface (GUI) for Autofocus Control System *(OPM-Autofocus_Analysis_and_Visualize_Calibration_Curve.py)*
+## Graphical User Interface (GUI) for Autofocus Control System *(OPM-Autofocus_GUI_on_RasberryPi.py)*
 
 The GUI designed for the autofocus system serves as an interactive platform for setting parameters, monitoring performance, and visualizing the point spread function (PSF) in real-time. It is built using the Tkinter library in Python and is optimized for user-friendly operation with a touchscreen. This appendix provides a detailed description of the GUI layout and the functions of each component.
 
@@ -197,8 +197,62 @@ Parameters can be updated: click **Stop Button** -> adjust PID gains in the **Co
 
 The user can recalibrate the system if necessary: click **Stop Button** -> click **Reset Button** and repeat the **Setup** process to set a reference position (setpoint).
 
+---
+
+## Autofocus Calibration and Analysis *(OPM-Autofocus_Analysis_and_Visualize_Calibration_Curve.py)*
+
+The developed GUI provides an interactive tool for processing and analyzing PSF (point spread function) images acquired during calibration of the autofocusing system. The software takes input images captured as the piezo stack moves the tertiary objective lens from -2.5 µm to +2.5 µm in fine increments. These images serve as the basis for generating calibration curves and computing error functions, with the PSF position measured at each displacement.
+
+![OPM-Autofocus-Fig S2](https://github.com/user-attachments/assets/e2cc9d5a-1794-41be-bfa6-1597fefd8d33)
+
+**Step-by-Step Usage Instructions:**
+
+**1\. Launch the Application**:
+
+Run the Python script to open the GUI. The interface is divided into sections for selecting input files, specifying an output folder, applying temporal color coding, and visualizing results.
+
+**2\. Select PSF Image Files**:
+
+Click the **"Select Files"** button to open a file dialog.
+
+Navigate to the folder containing the PSF images and select the entire series of images corresponding to the piezo stack displacements. The selected files will be listed, and the number of images will be displayed for confirmation.
+
+**3\. Set the Output Folder**:
+
+Click the **"Select Folder"** button to choose the folder where processed results will be saved.
+
+**4\. Choose a Colormap for Temporal Color Coding**:
+
+Select a colormap from the dropdown menu in the "Colormap" section. The colormap is used to apply temporal color coding to represent different axial (z-axis) displacements in the input images.
+
+Adjustments to the colormap automatically reset the GUI for real-time experimentation with visualization styles.
+
+**5\. Apply Temporal Color Coding**:
+
+Press the **"Apply Temporal Color Coding"** button to process the selected images.
+
+The software converts grayscale images into temporally color-coded representations, where colors correspond to specific z-displacements. The processed images are saved as a stack compatible with ImageJ for further analysis.
+
+Maximum intensity projection (MIP) images with and without a color bar are automatically generated and saved in the specified output folder.
+
+**6\. View and Analyze Results**:
+
+The **MIP (Maximum Intensity Projection)** of the processed images is displayed in the GUI under the "MIP" section. This provides an overview of the axial intensity distribution.
+
+The "Video" section visualizes the temporal progression of the processed images.
+
+**7\. Save Individual Frames**:
+
+Use the **"Save Current Frame"** button to save the currently displayed frame from the video section to the output folder for closer examination.
+
+**8\. Play and Pause Processed Video**:
+
+Start the video playback by clicking **"Start Video"**. The processed image stack is displayed as a loop, illustrating temporal color coding over the z-displacement range.
+
+Use the **"Stop Video"** button to pause playback.
 
 ---
+
 ## Example Outputs
 
 - **Calibration Curve**: 
