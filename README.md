@@ -203,7 +203,7 @@ The user can recalibrate the system if necessary: click **Stop Button** -> click
 
 The developed GUI provides an interactive tool for processing and analyzing PSF (point spread function) images acquired during calibration of the autofocusing system. The software takes input images captured as the piezo stack moves the tertiary objective lens from -2.5 µm to +2.5 µm in fine increments. These images serve as the basis for generating calibration curves and computing error functions, with the PSF position measured at each displacement.
 
-![OPM-Autofocus-Fig S2](https://github.com/user-attachments/assets/1367e4c7-e8e5-4401-8ded-bc4af3dc6934)
+![OPM-Autofocus-Fig S2](https://github.com/user-attachments/assets/e2089a2f-255f-4e2a-a8f9-43350289f1da)
 
 Fig. S2. Autofocus calibration Curve and Analysis. 
 
