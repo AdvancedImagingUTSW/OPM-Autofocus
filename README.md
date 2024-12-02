@@ -1,21 +1,20 @@
-
 # Active Remote Focus Stabilization in Oblique Plane Microscopy
 
-This repository contains Python scripts and tools developed for an **Active Remote Focus Stabilization System** designed for **Oblique Plane Microscopy (OPM)**. The system uses a Raspberry Pi to implement a real-time feedback control mechanism, ensuring sub-nanometer precision for long-term imaging without interrupting fluorescence imaging. This stabilization approach enables high-resolution imaging of subcellular structures over extended periods.
+This repository contains Python scripts and tools developed for an **Active Remote Focus Stabilization System** designed for **Oblique Plane Microscopy (OPM)**. The system uses a Raspberry Pi to implement a real time feedback control mechanism, ensuring sub-nanometer precision for long-term imaging without interrupting fluorescence imaging. This stabilization approach enables high-resolution imaging of subcellular structures over extended periods.
 
 ## Project Overview
 
 ### Background
-Oblique Plane Microscopy (OPM) is a light-sheet fluorescence microscopy (LSFM) variant that uses a single primary objective for both illumination and detection. Despite its advantages, the remote focusing unit in OPM is prone to axial drift, causing imaging degradation. The stabilization system in this repository solves this problem by using a laser alignment beam to actively monitor and correct the focal drift of secondary and tertiary objectives in real-time. 
+Oblique Plane Microscopy (OPM) is a light-sheet fluorescence microscopy (LSFM) variant that uses a single primary objective for both illumination and detection. Despite its advantages, the remote focusing unit in OPM is prone to axial drift, causing imaging degradation. The stabilization system in this repository solves this problem by using a laser alignment beam to actively monitor and correct the focal drift of secondary and tertiary objectives in real time. 
 
 The core components:
 1. A Raspberry Pi system with a high-speed Pi Camera (PiCam).
 2. A proportional-integral-derivative (PID) control algorithm for axial correction.
-3. A graphical user interface (GUI) for real-time monitoring and parameter tuning.
+3. A graphical user interface (GUI) for real time monitoring and parameter tuning.
 
 ### Features
 - **Autofocus Calibration and Analysis**: Creates calibration curves and analyzes the stabilization performance.
-- **Real-Time Autofocus Control**: Continuously monitors the focal plane and applies corrections via a piezoelectric actuator.
+- **real time Autofocus Control**: Continuously monitors the focal plane and applies corrections via a piezoelectric actuator.
 - **Customizable GUI**: Intuitive interface for users to adjust system parameters and monitor performance.
 
 ---
@@ -29,7 +28,7 @@ The core components:
 
 2. **`OPM-Autofocus_GUI_on_RasberryPi.py`**
    - Implements the autofocus system using a Raspberry Pi and PiCam.
-   - Includes a PID controller for real-time axial drift compensation.
+   - Includes a PID controller for real time axial drift compensation.
    - Offers a GUI for parameter tuning and live error visualization.
 
 ---
@@ -125,6 +124,83 @@ The off-centering of the alignment laser in the O2 pupil increases the sensitivi
 
 ---
 
+## Graphical User Interface (GUI) for Autofocus Control System
+The GUI designed for the autofocus system serves as an interactive platform for setting parameters, monitoring performance, and visualizing the point spread function (PSF) in real-time. It is built using the Tkinter library in Python and is optimized for user-friendly operation with a touchscreen. This section provides a detailed description of the GUI layout and the functions of each component.
+
+1. **Main Layout and Frames**:
+
+
+The GUI designed for the autofocus system serves as an interactive platform for setting parameters, monitoring performance, and visualizing the point spread function (PSF) in real-time. It is built using the Tkinter library in Python and is optimized for user-friendly operation with a touchscreen. This appendix provides a detailed description of the GUI layout and the functions of each component.
+
+**1\. Main Layout and Frames:**
+
+The GUI is organized into multiple sections for clarity and functional grouping. The groups are dynamically sized to accommodate user inputs and visual feedback.
+
+![OPM-Autofocus-Fig 4](https://github.com/user-attachments/assets/a7293962-f43c-406e-bc62-4510a4da91f7)
+
+Fig. S1. Graphical User Interface (GUI) for Autofocus Control System
+
+**a) Image Preview Group (blue box in the Fig. S1)**
+
+This group provides a live feed of the camera view, enabling visualization of the PSF in real time.
+
+Image Canvas:  
+A canvas widget where the live feed from the PiCam is displayed. This feed includes the real-time PSF overlays with the calculated center and setpoint for quick verification.
+
+Zoom Controls:  
+1x 4x and 10x buttons to zoom in on a region of interest (ROI) for detailed observation of the PSF
+
+**b) Control Parameters Group (red box in the Fig. S1)**
+
+This group is dedicated to parameter input for the autofocus system. It allows users to fine-tune the PID control loop and other system settings.
+
+Proportional Gain (P):  
+A text box where users can input the proportional gain (Kp) for the PID controller. This controls the immediate response to error.
+
+Integral Gain (I):  
+A text box for entering the integral gain (Ki), which addresses cumulative error over time.
+
+Derivative Gain (D):  
+A text box for setting the derivative gain (Kd). Although Kd is initially set to zero, this option allows flexibility for future adjustments
+
+**c) System Calibration Frame (green box in the Fig. S1)**
+
+This group allows users to calibrate the system before starting an experiment.
+
+Calib Button:  
+A button to initialize the laser spot's reference position (setpoint). This ensures accurate error calculations throughout the session.
+
+Reset Button:  
+A button to reset the calibration and clear the setpoint, allowing for a new reference point to be defined.
+
+Start/Stop Buttons:
+
+Buttons to start/stop the PID autofocus loop.
+
+Preview Button:
+
+A button to toggle the preview function.
+
+**2\. Interaction Workflow:**
+
+**Setup**:
+
+The user inputs PID gains in the **Control Parameters Group**.
+
+The **Calibration Button** in the **System Calibration Group** is pressed to set the initial position of the laser spot.
+
+**Operation**:
+
+The real-time feed in the **Image Preview Group** provides visual feedback of the PSF.
+
+**Adjustments**:
+
+Parameters can be updated: click **Stop Button** -> adjust PID gains in the **Control Parameters Group** -> click **Start Button**.
+
+The user can recalibrate the system if necessary: click **Stop Button** -> click **Reset Button** and repeat the **Setup** process to set a reference position (setpoint).
+
+
+---
 ## Example Outputs
 
 - **Calibration Curve**: 
