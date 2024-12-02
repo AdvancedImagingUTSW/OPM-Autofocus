@@ -124,13 +124,11 @@ The off-centering of the alignment laser in the O2 pupil increases the sensitivi
 
 ---
 
-## Graphical User Interface (GUI) for Autofocus Control System
-The GUI designed for the autofocus system serves as an interactive platform for setting parameters, monitoring performance, and visualizing the point spread function (PSF) in real-time. It is built using the Tkinter library in Python and is optimized for user-friendly operation with a touchscreen. This section provides a detailed description of the GUI layout and the functions of each component.
-
-1. **Main Layout and Frames**:
-
+## Graphical User Interface (GUI) for Autofocus Control System *(OPM-Autofocus_Analysis_and_Visualize_Calibration_Curve.py)*
 
 The GUI designed for the autofocus system serves as an interactive platform for setting parameters, monitoring performance, and visualizing the point spread function (PSF) in real-time. It is built using the Tkinter library in Python and is optimized for user-friendly operation with a touchscreen. This appendix provides a detailed description of the GUI layout and the functions of each component.
+
+The GUI designed for the autofocus system serves as an interactive platform for setting parameters, monitoring performance, and visualizing the point spread function (PSF) in real-time. It is built using the Tkinter library in Python and is optimized for user-friendly operation with a touchscreen. This section provides a detailed description of the GUI layout and the functions of each component.
 
 **1\. Main Layout and Frames:**
 
