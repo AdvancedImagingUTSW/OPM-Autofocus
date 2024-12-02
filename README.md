@@ -151,9 +151,9 @@ Fig. 3. A Time-lapse acquisition at the focal plane for estimating axial precisi
 
 ## References
 
-- 1. Nguyen, T. D., Rahmani, A., Ponjavic, A., Millett-Sikking, A., & Fiolka, R. *Active Remote Focus Stabilization in Oblique Plane Microscopy*. (bioRxiv.org - Comming soon)
-- 2. Chen, B., Chang, B.-J., Zhou, F. Y., Daetwyler, S., Sapoznik, E., Nanes, B. A., Terrazas, I., Gihana, G. M., Perez Castro, L., Chan, I. S., Conacci-Sorrell, M., Dean, K. M., Millett-Sikking, A., York, A. G., & Fiolka, R. (2022). Increasing the field-of-view in oblique plane microscopy via optical tiling. Biomed. Opt. Express, 13, 5616–5627.
-- 3. Daetwyler, S., Chang, B.-J., Chen, B., Voigt, F. F., Rajendran, D., Zhou, F., & Fiolka, R. (2023). Mesoscopic oblique plane microscopy via light-sheet mirroring. Optica, 10, 1571–1581.
+1. Nguyen, T. D., Rahmani, A., Ponjavic, A., Millett-Sikking, A., & Fiolka, R. *Active Remote Focus Stabilization in Oblique Plane Microscopy*. (bioRxiv.org - Comming soon)
+2. Chen, B., Chang, B.-J., Zhou, F. Y., Daetwyler, S., Sapoznik, E., Nanes, B. A., Terrazas, I., Gihana, G. M., Perez Castro, L., Chan, I. S., Conacci-Sorrell, M., Dean, K. M., Millett-Sikking, A., York, A. G., & Fiolka, R. (2022). Increasing the field-of-view in oblique plane microscopy via optical tiling. Biomed. Opt. Express, 13, 5616–5627.
+3. Daetwyler, S., Chang, B.-J., Chen, B., Voigt, F. F., Rajendran, D., Zhou, F., & Fiolka, R. (2023). Mesoscopic oblique plane microscopy via light-sheet mirroring. Optica, 10, 1571–1581.
 
 
 
