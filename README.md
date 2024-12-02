@@ -38,7 +38,7 @@ The core components:
 ### Prerequisites
 - **Optics**:
 
-See our bioRxiv paper [1] for full optical setup instructions.
+See our bioRxiv paper [1] (https://doi.org/10.1101/2024.11.29.626121) for full optical setup instructions.
 
 For illumination, laser light from a previously published light-sheet module [2] is coupled over a dichroic mirror (Di03-R405/488/561/635-t1-25x36, Semrock) into the optical train of the OPM. After passing through two tube lenses (TL 1: ITL-200, TL2: custom, 150mm EFL) and two galvo mirrors (Pangolin Saturn 9B with a 10mm y-mirror mounted 90 degrees rotated) for image space scanning [3], an oblique sheet is launched in sample space through the primary objective (O1, Nikon 40X, NA 1.25 silicone oil). 
 
@@ -281,7 +281,7 @@ Fig. 3. A Time-lapse acquisition at the focal plane for estimating axial precisi
 
 ## References
 
-1. Nguyen, T. D., Rahmani, A., Ponjavic, A., Millett-Sikking, A., & Fiolka, R. *Active Remote Focus Stabilization in Oblique Plane Microscopy*. (bioRxiv.org - Comming soon)
+1. Nguyen, T. D., Rahmani, A., Ponjavic, A., Millett-Sikking, A., & Fiolka, R. (2024). **Active Remote Focus Stabilization in Oblique Plane Microscopy**. bioRxiv (https://doi.org/10.1101/2024.11.29.626121). 
 2. Chen, B., Chang, B.-J., Zhou, F. Y., Daetwyler, S., Sapoznik, E., Nanes, B. A., Terrazas, I., Gihana, G. M., Perez Castro, L., Chan, I. S., Conacci-Sorrell, M., Dean, K. M., Millett-Sikking, A., York, A. G., & Fiolka, R. (2022). Increasing the field-of-view in oblique plane microscopy via optical tiling. Biomed. Opt. Express, 13, 5616–5627.
 3. Daetwyler, S., Chang, B.-J., Chen, B., Voigt, F. F., Rajendran, D., Zhou, F., & Fiolka, R. (2023). Mesoscopic oblique plane microscopy via light-sheet mirroring. Optica, 10, 1571–1581.
 
