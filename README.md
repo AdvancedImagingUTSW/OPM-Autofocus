@@ -14,8 +14,8 @@ The core components:
 
 ### Features
 - **Autofocus Calibration and Analysis**: Creates calibration curves and analyzes the stabilization performance.
-- **real time Autofocus Control**: Continuously monitors the focal plane and applies corrections via a piezoelectric actuator.
-- **Customizable GUI**: Intuitive interface for users to adjust system parameters and monitor performance.
+- **Real-time Autofocus Control**: Continuously monitors the focal plane and applies corrections via a piezoelectric actuator.
+- **Customizable GUI**: Intuitive user interface to adjust system parameters and monitor performance.
 
 ---
 
