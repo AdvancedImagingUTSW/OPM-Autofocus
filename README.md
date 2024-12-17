@@ -31,6 +31,9 @@ The core components:
    - Includes a PID controller for real time axial drift compensation.
    - Offers a GUI for parameter tuning and live error visualization.
 
+3. **`OPM-Autofocus_GUI_with_grasshopper_cam_NI_DAQ.py`**
+   - Implements the autofocus system using a laptop, FLIR grass hopper camera and NI DAQmx.
+
 ---
 
 ## Installation
