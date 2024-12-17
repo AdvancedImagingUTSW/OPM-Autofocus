@@ -260,6 +260,14 @@ Use the **"Stop Video"** button to pause playback.
 
 ---
 
+## OPM Autofocus with a FLIR Grasshopper camera and USB DAQ card *(OPM-Autofocus_GUI_with_grasshopper_cam_NI_DAQ.py)*
+
+We also performed alternative experiments using a FLIR Grasshopper camera, which possesses a larger bit depth (16 vs 10 bits). To this end, we ran the python scripts on a laptop, and used a USB DAQ card (USB-6003, National Instruments) to send control signals to the piezo controller at 100 Hz, synchronized with the camera’s 100fps imaging rate. 
+
+![2024-12-12 15_17_28-Spyder (Python 3 10)](https://github.com/user-attachments/assets/16b34440-ef1e-4785-b301-785047dca241)
+
+---
+
 ## Example Outputs
 
 - **Calibration Curve**: 
