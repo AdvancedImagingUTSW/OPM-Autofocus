@@ -1,6 +1,6 @@
 # Active Remote Focus Stabilization in Oblique Plane Microscopy
 
-This repository contains Python scripts and tools developed for an **Active Remote Focus Stabilization System** designed for **Oblique Plane Microscopy (OPM)**. The system uses a Raspberry Pi to implement a real-time feedback control mechanism, ensuring sub-nanometer precision for long-term imaging without interrupting fluorescence imaging. This stabilization approach enables high-resolution imaging of subcellular structures over extended periods.
+This repository contains Python scripts and tools developed for an **Active Remote Focus Stabilization System** designed for **Oblique Plane Microscopy (OPM)**. The system uses a Raspberry Pi to implement a real-time feedback control mechanism, ensuring sub-nanometer precision for long-term imaging without interrupting fluorescence imaging. This stabilization approach enables high-resolution imaging of subcellular structures over extended periods. See our bioRxiv paper [1] (https://doi.org/10.1101/2024.11.29.626121) for detailed setup and analysis.
 
 ## Project Overview
 
@@ -10,7 +10,7 @@ Oblique Plane Microscopy (OPM) is a light-sheet fluorescence microscopy (LSFM) v
 The core components:
 1. A Raspberry Pi system with a high-speed Pi Camera (PiCam).
 2. A proportional-integral-derivative (PID) control algorithm for axial correction.
-3. A graphical user interface (GUI) for real time monitoring and parameter tuning.
+3. A graphical user interface (GUI) for real-time monitoring and parameter tuning.
 
 ### Features
 - **Autofocus Calibration and Analysis**: Creates calibration curves and analyzes the stabilization performance.
@@ -28,11 +28,11 @@ The core components:
 
 2. **`OPM-Autofocus_GUI_on_RasberryPi.py`**
    - Implements the autofocus system using a Raspberry Pi and PiCam.
-   - Includes a PID controller for real time axial drift compensation.
+   - Includes a PID controller for real-time axial drift compensation.
    - Offers a GUI for parameter tuning and live error visualization.
 
 3. **`OPM-Autofocus_GUI_with_grasshopper_cam_NI_DAQ.py`**
-   - Implements the autofocus system using a laptop, FLIR grass hopper camera and NI DAQmx.
+   - Implements the autofocus system using a laptop, FLIR grasshopper camera, and NI DAQmx.
 
 ---
 
