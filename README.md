@@ -1,11 +1,11 @@
 # Active Remote Focus Stabilization in Oblique Plane Microscopy
 
-This repository contains Python scripts and tools developed for an **Active Remote Focus Stabilization System** designed for **Oblique Plane Microscopy (OPM)**. The system uses a Raspberry Pi to implement a real time feedback control mechanism, ensuring sub-nanometer precision for long-term imaging without interrupting fluorescence imaging. This stabilization approach enables high-resolution imaging of subcellular structures over extended periods.
+This repository contains Python scripts and tools developed for an **Active Remote Focus Stabilization System** designed for **Oblique Plane Microscopy (OPM)**. The system uses a Raspberry Pi to implement a real-time feedback control mechanism, ensuring sub-nanometer precision for long-term imaging without interrupting fluorescence imaging. This stabilization approach enables high-resolution imaging of subcellular structures over extended periods.
 
 ## Project Overview
 
 ### Background
-Oblique Plane Microscopy (OPM) is a light-sheet fluorescence microscopy (LSFM) variant that uses a single primary objective for both illumination and detection. Despite its advantages, the remote focusing unit in OPM is prone to axial drift, causing imaging degradation. The stabilization system in this repository solves this problem by using a laser alignment beam to actively monitor and correct the focal drift of secondary and tertiary objectives in real time. 
+Oblique Plane Microscopy (OPM) is a light-sheet fluorescence microscopy (LSFM) variant that uses a single primary objective for both illumination and detection. Despite its advantages, the remote focusing unit in OPM is prone to axial drift, causing imaging degradation. The stabilization system in this repository solves this problem by using a laser alignment beam to actively monitor and correct the focal drift of secondary and tertiary objectives in real-time. 
 
 The core components:
 1. A Raspberry Pi system with a high-speed Pi Camera (PiCam).
@@ -262,9 +262,10 @@ Use the **"Stop Video"** button to pause playback.
 
 ## OPM Autofocus with a FLIR Grasshopper camera and USB DAQ card *(OPM-Autofocus_GUI_with_grasshopper_cam_NI_DAQ.py)*
 
-We also performed alternative experiments using a FLIR Grasshopper camera, which possesses a larger bit depth (16 vs 10 bits). To this end, we ran the python scripts on a laptop, and used a USB DAQ card (USB-6003, National Instruments) to send control signals to the piezo controller at 100 Hz, synchronized with the camera’s 100fps imaging rate. 
+We also performed alternative experiments using a FLIR Grasshopper camera, which possesses a larger bit depth (16 vs 10 bits). To this end, we ran the python scripts on a laptop, and used a USB DAQ card (USB-6003, National Instruments) to send control signals to the piezo controller at 100 Hz, synchronized with the camera’s 100fps imaging rate. The GUI has all the functions as the RasberryPi's version, with additional camera functions such as set exposure, and binning configuration for the FLIR Grasshopper camera. The use of a higher-grade camera readily improved the stabilization precision. To ease the application of such a system, we plan to release a plug-in feature for remote focus stabilization in Navigate [4], a recent open-source, Python-based microscope control software. https://github.com/TheDeanLab/navigate/tree/develop 
 
 ![2024-12-12 15_17_28-Spyder (Python 3 10)](https://github.com/user-attachments/assets/16b34440-ef1e-4785-b301-785047dca241)
+Fig. S3. OPM Autofocus with a FLIR Grasshopper camera and USB DAQ card GUI
 
 ---
 
