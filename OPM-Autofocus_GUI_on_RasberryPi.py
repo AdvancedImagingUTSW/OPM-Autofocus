@@ -40,9 +40,9 @@ RT = 8000	# How long to run in seconds
 
 global pos
 global prop
-prop = 10
+prop = 0.1
 global integral_gain
-integral_gain = 1
+integral_gain = 0.01
 global derivative_gain
 derivative_gain = 0
 global frame_count
@@ -92,16 +92,14 @@ dac.value = pos
 
 picam2 = Picamera2()
 
-#picam2.start_preview(Preview.QTGL)
+
 
 size = (640, 400)
 # size = (320, 200)
 flim = 500
 exp = 10
 gain = 0.5
-# preview_config = picam2.create_preview_configuration(raw={'format': 'R10', 'size': size}, controls = {"FrameDurationLimits": (flim, flim), "ExposureTime": exp, "AnalogueGain": gain})
-# picam2.configure(preview_config)
-# picam2.start()
+
 
 picam2.encode_stream_name = "raw"
 video_config = picam2.create_video_configuration(raw={'format': 'R10', 'size': size}, controls = {"FrameDurationLimits": (500, 500), "ExposureTime": 60, "AnalogueGain": 1})
@@ -109,119 +107,6 @@ picam2.configure(video_config)
 encoder = Encoder()
 picam2.start()
 
-# # Function to calculate the intensity-weighted center of mass using a Gaussian filter (1D)
-# def calculate_psf_center(gray_frame, sigma = 2, noise_factor=2, y_center_tolerance=0.1, expected_y_center=381.6, column_range=10):
-    # # Sum pixel values across rows and columns
-    # sum_by_columns = np.sum(gray_frame, axis=0)
-
-    # # Apply 1D Gaussian filter to smooth the column sums
-    # sum_by_columns = gaussian_filter1d(sum_by_columns, sigma=sigma)
-
-    # # Automatically set a noise threshold to remove noise from the sum_by_columns
-    # sum_by_columns = remove_noise(sum_by_columns, noise_factor)
-
-    # # Find x center using sub-pixel accuracy
-    # x_center = find_subpixel_max(sum_by_columns, 3)
-
-    # # Define a range of columns around the x_center to sum for sum_by_rows
-    # start_col = max(0, int(x_center) - column_range)
-    # end_col = min(gray_frame.shape[1], int(x_center) + column_range + 1)
-
-    # # Sum the selected columns to form sum_by_rows
-    # sum_by_rows = np.sum(gray_frame[:, start_col:end_col], axis=1)
-
-    # # Apply a Gaussian filter to the sum_by_rows for smoothing
-    # sum_by_rows = gaussian_filter1d(sum_by_rows, sigma=sigma)
-
-    # # Automatically set a noise threshold to remove noise from the sum_by_rows
-    # sum_by_rows = remove_noise(sum_by_rows, noise_factor)
-
-    # # Correct for tilt in sum_by_rows
-    # corrected_sum_by_rows = correct_tilt(sum_by_rows)
-
-    # # Find y center using sub-pixel accuracy
-    # y_center = find_subpixel_max(corrected_sum_by_rows, 3)
-
-    # # Define a tolerance range for detecting outliers in the y center
-    # #tolerance_range = (1 - y_center_tolerance) * expected_y_center, (1 + y_center_tolerance) * expected_y_center
-
-    # # # If y_center is outside the tolerance range, replace it with the default y_center
-    # # if not (tolerance_range[0] <= y_center <= tolerance_range[1]):
-    # #     print(f"Outlier detected: y_center = {y_center:.2f}, replacing with default {expected_y_center:.2f}")
-    # #     y_center = expected_y_center
-
-    # return x_center, y_center
-    
-# # Function to remove noise from a 1D signal using a threshold based on noise_factor * standard deviation
-# def remove_noise(signal, noise_factor):
-    # noise_threshold = noise_factor * np.std(signal)
-    # signal_cleaned = np.where(signal > noise_threshold, signal, 0)
-    # return signal_cleaned
-
-# def find_subpixel_max(data, num_neighbors=3):
-    # if num_neighbors % 2 == 0:
-        # num_neighbors += 1
-    # half_neighbors = num_neighbors // 2
-    # max_index = np.argmax(data)
-    # start = max(0, max_index - half_neighbors)
-    # end = min(len(data), max_index + half_neighbors + 1)
-    # neighborhood_x = np.arange(start, end)
-    # neighborhood_y = data[start:end]
-    # coefficients = np.polyfit(neighborhood_x, neighborhood_y, deg=min(3, len(neighborhood_x) - 1))
-    # polynomial = np.poly1d(coefficients)
-    # subpixel_x = -coefficients[-2] / (2 * coefficients[-3]) if len(coefficients) > 2 else neighborhood_x[np.argmax(neighborhood_y)]
-    # return subpixel_x
-
-# # Function to correct the tilt in sum_by_rows using linear regression
-# def correct_tilt(sum_by_rows):
-    # row_indices = np.arange(len(sum_by_rows)).reshape(-1, 1)
-    # model = LinearRegression()
-    # model.fit(row_indices, sum_by_rows)
-    # fitted_line = model.predict(row_indices)
-    # corrected_sum_by_rows = sum_by_rows - fitted_line
-    # return corrected_sum_by_rows
-    
-# #define 2d gaussian function for fitting
-# def gaussian_2d(xy, x0, y0, sigma_x, sigma_y, amplitude, offset):
-#     x, y = xy
-#     gauss = amplitude * np.exp(-(((x - x0) ** 2) / (2 * sigma_x ** 2) + ((y - y0) ** 2) / (2 * sigma_y ** 2))) + offset
-#     return gauss.ravel()
-
-# # function to fit 2d gaussian with region of interest (roi)
-# def calculate_psf_center(image, roi_size=50):
-#     y_size, x_size = image.shape
-#     x = np.linspace(0, x_size - 1, x_size)
-#     y = np.linspace(0, y_size - 1, y_size)
-#     x, y = np.meshgrid(x, y)
-
-#     # find the location of the brightest pixel
-#     brightest_pixel = np.unravel_index(np.argmax(image, axis=None), image.shape)
-#     y_bright, x_bright = brightest_pixel
-
-#     # set a region of interest (roi) around the brightest pixel
-#     x_min = max(0, x_bright - roi_size // 2)
-#     x_max = min(x_size, x_bright + roi_size // 2)
-#     y_min = max(0, y_bright - roi_size // 2)
-#     y_max = min(y_size, y_bright + roi_size // 2)
-
-#     image_roi = image[y_min:y_max, x_min:x_max]  # cropped image
-
-#     # adjust coordinates in the cropped region
-#     x_roi, y_roi = np.meshgrid(np.linspace(x_min, x_max - 1, x_max - x_min),
-#                                np.linspace(y_min, y_max - 1, y_max - y_min))
-
-#     # initial guess for gaussian fit within the roi
-#     initial_guess = (x_bright, y_bright, 10, 10, np.max(image_roi), np.min(image_roi))
-
-#     try:
-#         popt, _ = curve_fit(gaussian_2d, (x_roi, y_roi), image_roi.ravel(), p0=initial_guess, method='lm')
-#     except RuntimeError as e:
-#         print(f"fit failed: {e}")
-#         return None, None
-
-#     # extract the center coordinates and adjust back to original image coordinates
-#     x0, y0 = popt[0], popt[1]
-#     return x0, y0
 
 
 # Define 1D Gaussian function for fitting
@@ -308,6 +193,10 @@ class PIDController:
         self.previous_error = error
 
         return control_signal, self.previous_error, self.integral
+    def reset(self):
+        self.previous_error = 0
+        self.integral = 0
+        
 
 # Function to zoom in on the center of the image
 def zoom_in_image(image, zoom_ratio = 3):
@@ -380,7 +269,7 @@ def apply_timestamp(request):
             
             
             
-            pos += control_signal
+            pos += control_signal*100
             
             
             if int(pos) < 1000:
@@ -453,55 +342,6 @@ class Application(tk.Tk):
 
     def create_widgets(self):
         
-
-        # # Create and place the image preview label
-        # self.image_label = tk.Label(self)
-        # self.image_label.grid(row=0, column=0, rowspan=8, padx=5, pady=5)  # Image preview
-
-        # # Create control buttons
-        # self.preview_button = tk.Button(self, text="Preview", command=self.preview)
-        # self.preview_button.grid(row=1, column=1, padx=5, pady=5)
-
-        # self.reset_piezo = tk.Button(self, text="Reset", command=self.reset)
-        # self.reset_piezo.grid(row=2, column=1, padx=5, pady=5)
-
-        # self.calib_button = tk.Button(self, text="Calib", command=self.calib)
-        # self.calib_button.grid(row=3, column=1, padx=5, pady=5)
-
-        # self.start_button = tk.Button(self, text="Start", command=self.start_recording)
-        # self.start_button.grid(row=4, column=1, padx=5, pady=5)
-
-        # self.stop_button = tk.Button(self, text="Stop", command=self.stop_recording)
-        # self.stop_button.grid(row=5, column=1, padx=5, pady=5)
-
-        # self.set_button = tk.Button(self, text="Set Zoom", command=self.set_zoom)
-        # self.set_button.grid(row=6, column=1, padx=5, pady=5)
-
-        # # Create and place text entries for PID parameters in a new column
-        # self.prop_label = tk.Label(self, text="Kp")
-        # self.prop_label.grid(row=0, column=2, sticky=tk.W)
-        # self.prop_entry = tk.Entry(self)
-        # self.prop_entry.grid(row=1, column=2)
-        # self.prop_entry.insert(0, str(prop))  # Default value
-
-        # self.integral_gain_label = tk.Label(self, text="Ki")
-        # self.integral_gain_label.grid(row=2, column=2, sticky=tk.W)
-        # self.integral_gain_entry = tk.Entry(self)
-        # self.integral_gain_entry.grid(row=3, column=2)
-        # self.integral_gain_entry.insert(0, str(integral_gain))  # Default value
-
-        # self.derivative_gain_label = tk.Label(self, text="Kd")
-        # self.derivative_gain_label.grid(row=4, column=2, sticky=tk.W)
-        # self.derivative_gain_entry = tk.Entry(self)
-        # self.derivative_gain_entry.grid(row=5, column=2)
-        # self.derivative_gain_entry.insert(0, str(derivative_gain))  # Default value
-
-        # self.zoom_label = tk.Label(self, text="Zoom:")
-        # self.zoom_label.grid(row=6, column=2, sticky=tk.W)
-        # self.zoom_entry = tk.Entry(self)
-        # self.zoom_entry.grid(row=7, column=2)
-        # self.zoom_entry.insert(0, str(1))  # Default value
-
         # Create and place the image preview label
         self.image_label = tk.Label(self)
         self.image_label.grid(row=0, column=0, rowspan=8, padx=5, pady=5)  # Image preview
@@ -643,6 +483,7 @@ class Application(tk.Tk):
         self.control_signal = 0
         self.previous_error = 0
         self.integral = 0
+        pid.reset()
         self.update_preview()
     
     def set_zoom_4(self):
